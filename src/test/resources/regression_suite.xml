@@ -4,7 +4,7 @@
 
     <test name="Regression">
         <classes>
-            <class name="test.PostTokenTest"/>
+            <class name="test.GenerateTokenTest"/>
             <class name="test.GetStatusTest"/>
             <class name="test.PostOrderTest"/>
         </classes>

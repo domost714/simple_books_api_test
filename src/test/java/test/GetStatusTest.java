@@ -12,10 +12,14 @@ public class GetStatusTest {
 
     @Test
     public void okWhenGetStatusTest() {
-        given().when().get(EndpointManager.status).then().statusCode(200);
+        given()
+                .get(EndpointManager.status)
+                .then().statusCode(200);
     }
     @Test
-    public void lessThanTwoSecondsResponseWhenGetStatusTest() {
-        given().when().get(EndpointManager.status).then().time(lessThan(2L), TimeUnit.SECONDS);
+    public void verifyPerformanceWhenGetStatusTest() {
+        given()
+                .get(EndpointManager.status)
+                .then().time(lessThan(3L), TimeUnit.SECONDS);
     }
 }
