@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.lessThan;
 
 public class PostOrderTest {
     @Test
-    public void PostCorrectOrderTest() {
+    public void postCorrectOrderTest() {
         Order order = new Order();
         order.setBookId(1);
         order.setCustomerName("Tester");
@@ -23,7 +23,7 @@ public class PostOrderTest {
                 .then().statusCode(201);
     }
     @Test
-    public void verifyPerformanceWhenPostCorrectOrderTest() {
+    public void verifyPerformanceWhenPostOrderTest() {
         Order order = new Order();
         order.setBookId(1);
         order.setCustomerName("Tester");
@@ -31,5 +31,25 @@ public class PostOrderTest {
         given().auth().oauth2(DataHelper.token).body(order).contentType("application/json")
                 .post(EndpointManager.orders)
                 .then().time(lessThan(3L), TimeUnit.SECONDS);
+    }
+    @Test
+    public void unauthorizedWhenPostOrderWithoutTokenTest() {
+        Order order = new Order();
+        order.setBookId(1);
+        order.setCustomerName("Tester");
+
+        given().body(order).contentType("application/json")
+                .post(EndpointManager.orders)
+                .then().statusCode(401);
+    }
+    @Test
+    public void postOrderWithIncorrectIdTest() {
+        Order order = new Order();
+        order.setBookIdAsString(DataHelper.invalidId);
+        order.setCustomerName("Tester");
+
+        given().auth().oauth2(DataHelper.token).body(order).contentType("application/json")
+                .post(EndpointManager.orders)
+                .then().statusCode(400);
     }
 }

@@ -7,4 +7,6 @@ public class DataHelper {
             "  \"clientName\": \"Test\",\n" +
             "  \"clientEmail\": \"dominik@tester.pl\"\n" +
             "}";
+
+    public static String invalidId = "abc";
 }
