@@ -1,8 +1,0 @@
-conf\DataHelper.class
-conf\EndpointManager.class
-test\GetStatusTest.class
-conf\dto\Book.class
-conf\SetupTest.class
-test\PostBookTest.class
-conf\PropertyReader.class
-test\PostTokenTest.class
