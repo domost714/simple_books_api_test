@@ -2,6 +2,7 @@ package test;
 
 import conf.DataHelper;
 import conf.EndpointManager;
+import conf.RequestHelper;
 import conf.dto.Order;
 import org.testng.annotations.Test;
 
@@ -14,31 +15,19 @@ import static org.hamcrest.Matchers.*;
 public class PostOrderTest {
     @Test
     public void postCorrectOrderTest() {
-        Order order = new Order();
-        order.setBookId(1);
-        order.setCustomerName("Tester");
-
-        given().auth().oauth2(DataHelper.token).body(order).contentType("application/json")
+        given().auth().oauth2(DataHelper.token).body(RequestHelper.postOrder(1, "Tester")).contentType("application/json")
                 .post(EndpointManager.orders)
                 .then().statusCode(201).body(containsString("true")).body("orderId", notNullValue());
     }
     @Test
     public void verifyPerformanceWhenPostOrderTest() {
-        Order order = new Order();
-        order.setBookId(1);
-        order.setCustomerName("Tester");
-
-        given().auth().oauth2(DataHelper.token).body(order).contentType("application/json")
+        given().auth().oauth2(DataHelper.token).body(RequestHelper.postOrder(1, "Tester")).contentType("application/json")
                 .post(EndpointManager.orders)
                 .then().time(lessThan(3L), TimeUnit.SECONDS);
     }
     @Test
     public void unauthorizedWhenPostOrderWithoutTokenTest() {
-        Order order = new Order();
-        order.setBookId(1);
-        order.setCustomerName("Tester");
-
-        given().body(order).contentType("application/json")
+        given().body(RequestHelper.postOrder(1, "Tester")).contentType("application/json")
                 .post(EndpointManager.orders)
                 .then().statusCode(401);
     }
