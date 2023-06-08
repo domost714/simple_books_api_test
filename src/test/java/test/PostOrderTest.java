@@ -3,7 +3,6 @@ package test;
 import conf.DataHelper;
 import conf.EndpointManager;
 import conf.RequestHelper;
-import conf.dto.Order;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -33,11 +32,7 @@ public class PostOrderTest {
     }
     @Test
     public void postOrderWithIncorrectIdTest() {
-        Order order = new Order();
-        order.setBookIdAsString(DataHelper.invalidId);
-        order.setCustomerName("Tester");
-
-        given().auth().oauth2(DataHelper.token).body(order).contentType("application/json")
+        given().auth().oauth2(DataHelper.token).body(RequestHelper.postOrder(DataHelper.invalidId, "Tester")).contentType("application/json")
                 .post(EndpointManager.orders)
                 .then().statusCode(400);
     }

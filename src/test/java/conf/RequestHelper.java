@@ -12,6 +12,13 @@ public class RequestHelper {
         order.setCustomerName(customerName);
         return order;
     }
+
+    public static Order postOrder(String bookId, String customerName) {
+        Order order = new Order();
+        order.setBookIdAsString(bookId);
+        order.setCustomerName(customerName);
+        return order;
+    }
     public static String postOrderAndGetItsId(int bookId, String customerName) {
         Order order = new Order();
         order.setBookId(bookId);
