@@ -7,6 +7,7 @@
             <class name="test.GenerateTokenTest"/>
             <class name="test.GetStatusTest"/>
             <class name="test.PostOrderTest"/>
+            <class name="test.GetOrderTest"/>
         </classes>
     </test>
 
