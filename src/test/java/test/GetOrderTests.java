@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.lessThan;
 
-public class GetOrderTest {
+public class GetOrderTests {
     @Test
     public void whenPostOrderThenGetItsDetailsByIDTest() {
         String id = RequestHelper.postOrderAndGetItsId(1, "Testerski");

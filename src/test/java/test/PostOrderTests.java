@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
 
-public class PostOrderTest {
+public class PostOrderTests {
     @Test
     public void postCorrectOrderTest() {
         given().auth().oauth2(DataHelper.token).body(RequestHelper.postOrder(1, "Tester")).contentType("application/json")

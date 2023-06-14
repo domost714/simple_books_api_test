@@ -4,10 +4,10 @@
 
     <test name="Regression">
         <classes>
-            <class name="test.GenerateTokenTest"/>
-            <class name="test.GetStatusTest"/>
-            <class name="test.PostOrderTest"/>
-            <class name="test.GetOrderTest"/>
+            <class name="test.GenerateTokenTests"/>
+            <class name="test.GetStatusTests"/>
+            <class name="test.PostOrderTests"/>
+            <class name="test.GetOrderTests"/>
         </classes>
     </test>
 

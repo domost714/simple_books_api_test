@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.lessThan;
 
-public class GetStatusTest {
+public class GetStatusTests {
 
     @Test
     public void okWhenGetStatusTest() {

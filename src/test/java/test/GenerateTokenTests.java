@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.lessThan;
 
-public class GenerateTokenTest {
+public class GenerateTokenTests {
     @Test
     public void checkIfTokenIsValid() {
         given().body(DataHelper.generateTokenData).contentType("application/json")
