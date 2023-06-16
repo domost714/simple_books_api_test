@@ -28,4 +28,20 @@ public class GetOrderTests {
                 .get(EndpointManager.orders + id)
                 .then().statusCode(200).time(lessThan(3L), TimeUnit.SECONDS);
     }
+    @Test
+    public void unauthorizedWhenGetOrderWithoutTokenTest() {
+        String id = RequestHelper.postOrderAndGetItsId(1, "Testerski");
+
+        given()
+                .get(EndpointManager.orders + id)
+                .then().statusCode(401);
+    }
+    @Test
+    public void unauthorizedWhenGetOrderWithExpiredTokenTest() {
+        String id = RequestHelper.postOrderAndGetItsId(1, "Testerski");
+
+        given().auth().oauth2(DataHelper.expiredToken)
+                .get(EndpointManager.orders + id)
+                .then().statusCode(401);
+    }
 }

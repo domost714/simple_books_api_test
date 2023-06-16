@@ -31,7 +31,13 @@ public class PostOrderTests {
                 .then().statusCode(401);
     }
     @Test
-    public void postOrderWithIncorrectIdTest() {
+    public void unauthorizedWhenPostOrderWithExpiredTokenTest() {
+        given().auth().oauth2(DataHelper.expiredToken).body(RequestHelper.postOrder(1, "Tester")).contentType("application/json")
+                .post(EndpointManager.orders)
+                .then().statusCode(401);
+    }
+    @Test
+    public void unauthorizedWhenPostOrderWithIncorrectIdTest() {
         given().auth().oauth2(DataHelper.token).body(RequestHelper.postOrder(DataHelper.invalidId, "Tester")).contentType("application/json")
                 .post(EndpointManager.orders)
                 .then().statusCode(400);
