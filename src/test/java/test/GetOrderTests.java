@@ -44,4 +44,13 @@ public class GetOrderTests {
                 .get(EndpointManager.orders + id)
                 .then().statusCode(401);
     }
+
+    @Test
+    public void notFoundWhenUserBTryToGetOrderPostedByUserATest() {
+        String id = RequestHelper.postOrderAndGetItsId(1, "Testerski");
+
+        given().auth().oauth2(DataHelper.tokenB)
+                .get(EndpointManager.orders + id)
+                .then().statusCode(404);
+    }
 }
