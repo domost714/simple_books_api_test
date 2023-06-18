@@ -19,14 +19,15 @@ public class RequestHelper {
         order.setCustomerName(customerName);
         return order;
     }
+
     public static String postOrderAndGetItsId(int bookId, String customerName) {
         Order order = new Order();
         order.setBookId(bookId);
         order.setCustomerName(customerName);
 
-         String id = given().auth().oauth2(DataHelper.token).body(order).contentType("application/json")
+        String id = given().auth().oauth2(DataHelper.token).body(order).contentType("application/json")
                 .post(EndpointManager.orders)
                 .then().statusCode(201).extract().path("orderId");
-         return id;
+        return id;
     }
 }

@@ -8,6 +8,8 @@
             <class name="test.GetStatusTests"/>
             <class name="test.PostOrderTests"/>
             <class name="test.GetOrderTests"/>
+            <class name="test.DeleteOrderTests"/>
+            <class name="test.PatchOrderTests"/>
         </classes>
     </test>
 

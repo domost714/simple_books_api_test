@@ -17,6 +17,7 @@ public class GenerateTokenTests {
                 .then().statusCode(409);
         System.out.println("If test failed, you have to change token variable in DataHelper class according to API documentation");
     }
+
     @Test
     public void verifyPerformanceWhenGenerateTokenTest() {
 

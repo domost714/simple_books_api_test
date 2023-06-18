@@ -16,6 +16,7 @@ public class GetStatusTests {
                 .get(EndpointManager.status)
                 .then().statusCode(200);
     }
+
     @Test
     public void verifyPerformanceWhenGetStatusTest() {
         given()

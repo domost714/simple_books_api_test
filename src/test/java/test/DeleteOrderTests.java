@@ -48,6 +48,7 @@ public class DeleteOrderTests {
                 .delete(EndpointManager.orders + id)
                 .then().statusCode(401);
     }
+
     @Test
     public void notFoundWhenUserBTryToGetOrderPostedByUserATest() {
         String id = RequestHelper.postOrderAndGetItsId(1, "Testerski");
